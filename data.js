@@ -58,10 +58,14 @@ app.get("/list" , (req, res)=>{
     axios.get("https://type.fit/api/quotes")
     .then((response)=>{
         response.data
-        console.log(response.data)
+        //console.log(response.data)
         let data = response.data
       let tes=  data.map((val, i)=>val.text)
-        comment.insertMany({tes})
+      let page = req.query.page|| req.body.page || 1
+      let limit = 5;
+      let skip = (page -1)* limit
+      tes =tes.slice(skip, skip+limit)
+      comment.insertMany({tes})
         res.render("list", {tes})
     })
 })

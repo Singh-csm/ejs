@@ -6,10 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <div style="background-color: darkslategrey; margin: 3%; padding: 3%; border-radius: 20px;">
  
-            <p>Current Quote.: <%= tes %></p>
-     
+        <h1>Current Quotes:</h1>
+
+       
+            <% tes.forEach(function(tes) { %>
+                <p><li><%= tes %></li></p>
+            <% }) %>
+
+          
+      
     </div>
 </body>
 </html>
